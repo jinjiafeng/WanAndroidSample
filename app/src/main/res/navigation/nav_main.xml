@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:toosl="http://schemas.android.com/tools"
+            android:id="@+id/nav_main"
+            app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.jjf.template.ui.MainFragment"
+        android:label="MainFragment"
+        toosl:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/showResp"
+            app:destination="@id/respFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/respFragment"
+        android:name="com.jjf.template.ui.RespFragment"
+        android:label="RespFragment">
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>
