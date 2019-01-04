@@ -18,7 +18,7 @@ import javax.inject.Inject
 class App : Application(),HasActivityInjector {
 
     @Inject
-    internal var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>? = null
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
     companion object {
        lateinit var instance: App
     }

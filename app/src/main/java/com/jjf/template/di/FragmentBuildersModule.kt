@@ -1,9 +1,12 @@
 package com.jjf.template.di
 
+import androidx.lifecycle.ViewModel
 import com.jjf.template.ui.MainFragment
-
+import com.jjf.template.ui.UserViewModel
+import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import dagger.multibindings.IntoMap
 
 /**
  * @author xj
@@ -13,7 +16,13 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class FragmentBuildersModule {
 
-    @ContributesAndroidInjector
-    internal abstract fun ContributeMainFragment(): MainFragment
 
+    @ContributesAndroidInjector
+     abstract fun ContributeMainFragment(): MainFragment
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(UserViewModel::class)
+     abstract fun bindUserViewModel(userViewModel: UserViewModel): ViewModel
 }

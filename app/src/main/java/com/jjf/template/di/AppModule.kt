@@ -22,7 +22,7 @@ import javax.inject.Singleton
  * description :
  */
 
-@Module(includes = [ViewModelModule::class])
+@Module
 class AppModule {
     @Singleton
     @Provides

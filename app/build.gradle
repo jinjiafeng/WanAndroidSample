@@ -58,8 +58,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
 
     // Dagger
+    implementation "com.google.dagger:dagger:$rootProject.dagger"
     implementation "com.google.dagger:dagger-android:$rootProject.dagger"
-    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger" // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger"
 

@@ -5,7 +5,10 @@ import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.jjf.template.AppExecutors
+import com.jjf.template.api.ApiEmptyResponse
+import com.jjf.template.api.ApiErrorResponse
 import com.jjf.template.api.ApiResponse
+import com.jjf.template.api.ApiSuccessResponse
 import com.jjf.template.bean.Resource
 
 /**
@@ -53,8 +56,8 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mAppExe
             result.removeSource(dbSource)
             result.removeSource(apiResponse)
             when (response) {
-                is ApiResponse.ApiSuccessResponse<*> -> mAppExecutors.diskIO().execute {
-                    saveCallResult(processResponse(response as ApiResponse.ApiSuccessResponse<RequestType>))
+                is ApiSuccessResponse<*> -> mAppExecutors.diskIO().execute {
+                    saveCallResult(processResponse(response as ApiSuccessResponse<RequestType>))
                     mAppExecutors.mainThread().execute {
                         // we specially request a new live data,
                         // otherwise we will get immediately last cached value,
@@ -62,9 +65,9 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mAppExe
                         result.addSource(loadFromDb()) { newData -> setValue(Resource.success(newData)) }
                     }
                 }
-                is ApiResponse.ApiEmptyResponse<*> -> mAppExecutors.mainThread().execute { result.addSource(loadFromDb()) { newData -> setValue(Resource.success(newData)) } }
-                is ApiResponse.ApiErrorResponse<*> -> result.addSource(dbSource) { newData ->
-                    setValue(Resource.error((response as ApiResponse.ApiErrorResponse<RequestType>)
+                is ApiEmptyResponse<*> -> mAppExecutors.mainThread().execute { result.addSource(loadFromDb()) { newData -> setValue(Resource.success(newData)) } }
+                is ApiErrorResponse<*> -> result.addSource(dbSource) { newData ->
+                    setValue(Resource.error((response as ApiErrorResponse<RequestType>)
                             .errorMessage, newData))
                 }
             }
@@ -94,7 +97,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mAppExe
      * @return
      */
     @WorkerThread
-    protected fun processResponse(response: ApiResponse.ApiSuccessResponse<RequestType>): RequestType {
+    protected fun processResponse(response: ApiSuccessResponse<RequestType>): RequestType {
         return response.body
     }
 

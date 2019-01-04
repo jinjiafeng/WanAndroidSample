@@ -35,6 +35,8 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.*
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.jjf.template.BuildConfig
 import timber.log.Timber
 
@@ -182,6 +184,9 @@ inline fun <reified VM : ViewModel> Fragment.viewModelProvider(
         provider: ViewModelProvider.Factory
 ) =
         ViewModelProviders.of(this, provider).get(VM::class.java)
+
+fun Fragment.findNavController(): NavController =
+        NavHostFragment.findNavController(this)
 
 /**
  * Like [Fragment.viewModelProvider] for Fragments that want a [ViewModel] scoped to the Activity.
