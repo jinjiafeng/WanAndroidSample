@@ -15,13 +15,15 @@ import javax.inject.Inject
  * date: 18-11-7
  * description :
  */
-class App : Application(),HasActivityInjector {
+class App : Application(), HasActivityInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
     companion object {
-       lateinit var instance: App
+        lateinit var instance: App
     }
+
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -37,8 +39,6 @@ class App : Application(),HasActivityInjector {
         LeakCanary.install(this)
     }
 
-    override fun activityInjector(): AndroidInjector<Activity>? {
-        return dispatchingAndroidInjector
-    }
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
 
 }

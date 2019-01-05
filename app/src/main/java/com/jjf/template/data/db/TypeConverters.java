@@ -1,4 +1,4 @@
-package com.jjf.template.db;
+package com.jjf.template.data.db;
 
 import java.util.Date;
 

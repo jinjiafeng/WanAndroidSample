@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jjf.template.api
+package com.jjf.template.data.api
 
 import retrofit2.Response
 import timber.log.Timber

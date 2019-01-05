@@ -1,4 +1,4 @@
-package com.jjf.template.bean
+package com.jjf.template.result
 
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName

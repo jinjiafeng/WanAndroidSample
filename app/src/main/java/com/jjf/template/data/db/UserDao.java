@@ -1,6 +1,6 @@
-package com.jjf.template.db;
+package com.jjf.template.data.db;
 
-import com.jjf.template.bean.User;
+import com.jjf.template.result.User;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

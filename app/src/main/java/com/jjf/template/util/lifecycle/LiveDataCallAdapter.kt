@@ -1,7 +1,7 @@
 package com.jjf.template.util.lifecycle
 
 import androidx.lifecycle.LiveData
-import com.jjf.template.api.ApiResponse
+import com.jjf.template.data.api.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback

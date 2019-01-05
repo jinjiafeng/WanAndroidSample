@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.jjf.template.BaseFragment
 import com.jjf.template.R
 import com.jjf.template.di.Injectable
 import com.jjf.template.util.SoftInputUtil
 import com.jjf.template.util.findNavController
-import com.jjf.template.util.lifecycle.ViewModelFactory
 import com.jjf.template.util.viewModelProvider
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
@@ -25,7 +25,7 @@ import javax.inject.Inject
     override fun getLayoutId(): Int = R.layout.fragment_main
 
     @Inject
-    lateinit var mViewModelFactory: ViewModelFactory
+    lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     lateinit var mUserViewModel: UserViewModel
 
@@ -60,5 +60,4 @@ import javax.inject.Inject
         }
         mUserViewModel.setLogin(login)
     }
-
 }

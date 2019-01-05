@@ -5,11 +5,11 @@ import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.jjf.template.AppExecutors
-import com.jjf.template.api.ApiEmptyResponse
-import com.jjf.template.api.ApiErrorResponse
-import com.jjf.template.api.ApiResponse
-import com.jjf.template.api.ApiSuccessResponse
-import com.jjf.template.bean.Resource
+import com.jjf.template.data.api.ApiEmptyResponse
+import com.jjf.template.data.api.ApiErrorResponse
+import com.jjf.template.data.api.ApiResponse
+import com.jjf.template.data.api.ApiSuccessResponse
+import com.jjf.template.result.Resource
 
 /**
  * @author jjf
@@ -45,7 +45,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mAppExe
      * @return
      */
     @MainThread
-    protected abstract fun shouldFetch(data: ResultType): Boolean
+    protected abstract fun shouldFetch(data: ResultType?): Boolean
 
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {
         val apiResponse = createCall()

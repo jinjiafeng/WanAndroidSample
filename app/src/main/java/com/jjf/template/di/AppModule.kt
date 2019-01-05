@@ -3,9 +3,11 @@ package com.jjf.template.di
 import android.app.Application
 import androidx.room.Room
 import com.jjf.template.BuildConfig
-import com.jjf.template.api.GithubService
-import com.jjf.template.db.AppDb
-import com.jjf.template.db.UserDao
+import com.jjf.template.data.PreferenceStorage
+import com.jjf.template.data.SharedPreferenceStorage
+import com.jjf.template.data.api.GithubService
+import com.jjf.template.data.db.AppDb
+import com.jjf.template.data.db.UserDao
 import com.jjf.template.util.lifecycle.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -22,8 +24,16 @@ import javax.inject.Singleton
  * description :
  */
 
-@Module
+@Module()
 class AppModule {
+
+
+    @Singleton
+    @Provides
+    fun providePreferenceStorage(application: Application):PreferenceStorage{
+        return SharedPreferenceStorage(application)
+    }
+
     @Singleton
     @Provides
     fun provideGithubService(okHttpClient: OkHttpClient): GithubService {

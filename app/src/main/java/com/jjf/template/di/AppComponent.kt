@@ -4,7 +4,7 @@ import android.app.Application
 import com.jjf.template.App
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 /**
@@ -14,14 +14,12 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(modules = [
-    AndroidInjectionModule::class,
+    AndroidSupportInjectionModule::class,
     AppModule::class,
-    ViewModelModule::class,
-    ActivityBindingModule::class])
-
+    ActivityBindingModule::class,
+    ViewModelModule::class
+])
 interface AppComponent {
-    fun inject(app: App)
-
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -29,4 +27,6 @@ interface AppComponent {
 
         fun build(): AppComponent
     }
+
+    fun inject(app: App)
 }

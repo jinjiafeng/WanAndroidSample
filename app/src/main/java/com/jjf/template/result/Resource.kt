@@ -1,6 +1,6 @@
-package com.jjf.template.bean
+package com.jjf.template.result
 
-import com.jjf.template.bean.Status.*
+import com.jjf.template.result.Status.*
 
 /**
  * @author xj

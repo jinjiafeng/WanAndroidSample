@@ -1,7 +1,7 @@
-package com.jjf.template.api
+package com.jjf.template.data.api
 
 import androidx.lifecycle.LiveData
-import com.jjf.template.bean.User
+import com.jjf.template.result.User
 import retrofit2.http.GET
 import retrofit2.http.Path
 

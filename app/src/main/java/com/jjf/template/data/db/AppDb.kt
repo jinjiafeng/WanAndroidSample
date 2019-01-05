@@ -1,8 +1,8 @@
-package com.jjf.template.db
+package com.jjf.template.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.jjf.template.bean.User
+import com.jjf.template.result.User
 
 /**
  * @author xj
