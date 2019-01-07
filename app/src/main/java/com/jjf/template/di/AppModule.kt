@@ -1,7 +1,8 @@
 package com.jjf.template.di
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
+import com.jjf.template.App
 import com.jjf.template.BuildConfig
 import com.jjf.template.data.PreferenceStorage
 import com.jjf.template.data.SharedPreferenceStorage
@@ -24,14 +25,18 @@ import javax.inject.Singleton
  * description :
  */
 
-@Module()
+@Module
 class AppModule {
 
+    @Provides
+    fun provideContext(application: App): Context {
+        return application.applicationContext
+    }
 
     @Singleton
     @Provides
-    fun providePreferenceStorage(application: Application):PreferenceStorage{
-        return SharedPreferenceStorage(application)
+    fun providePreferenceStorage(context: Context):PreferenceStorage{
+        return SharedPreferenceStorage(context)
     }
 
     @Singleton
@@ -65,7 +70,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideDb(application: Application): AppDb {
+    fun provideDb(application: App): AppDb {
         return Room.databaseBuilder(application, AppDb::class.java, "app.db")
                 .fallbackToDestructiveMigration()
                 .build()

@@ -1,12 +1,9 @@
 package com.jjf.template.di
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.jjf.template.ui.UserViewModel
 import com.jjf.template.util.lifecycle.ViewModelFactory
 import dagger.Binds
 import dagger.Module
-import dagger.multibindings.IntoMap
 
 /**
  * @author xj
@@ -16,11 +13,6 @@ import dagger.multibindings.IntoMap
 
 @Module
 abstract class ViewModelModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(UserViewModel::class)
-    abstract fun bindUserViewModel(userViewModel: UserViewModel): ViewModel
-
 
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

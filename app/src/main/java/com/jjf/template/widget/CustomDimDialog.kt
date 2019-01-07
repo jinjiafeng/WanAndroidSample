@@ -15,7 +15,7 @@ import com.jjf.template.R
  * date: 19-1-5
  * description :
  */
-class CustomDimDialog(context: Context?) : AppCompatDialog(context, R.style.Theme_cloud_Dialog) {
+class CustomDimDialog(context: Context?) : AppCompatDialog(context, R.style.Theme_Cloud_Dialog) {
 
     init {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)

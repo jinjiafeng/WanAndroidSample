@@ -20,6 +20,4 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
     override fun supportFragmentInjector(): AndroidInjector<Fragment>?  = dispatchingAndroidInjector
 
-
-
 }
