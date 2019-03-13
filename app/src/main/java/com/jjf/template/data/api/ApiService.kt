@@ -1,7 +1,7 @@
 package com.jjf.template.data.api
 
 import androidx.lifecycle.LiveData
-import com.jjf.template.result.User
+import com.jjf.template.result.ArticleList
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -10,13 +10,13 @@ import retrofit2.http.Path
  * date: 18-11-7
  * description :
  */
-interface GithubService {
+interface ApiService {
     /**
      * 登录
      * @param login
      * @return 用户数据
      */
-    @GET("users/{login}")
-    fun getUser(@Path("login") login: String): LiveData<ApiResponse<User>>
+    @GET("project/list/{page}/json?cid=294")
+    fun homeArticleList(@Path("page") page: Int): LiveData<ApiResponse<ArticleList>>
 
 }

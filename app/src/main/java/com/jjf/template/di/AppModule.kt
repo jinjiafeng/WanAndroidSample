@@ -6,9 +6,9 @@ import com.jjf.template.App
 import com.jjf.template.BuildConfig
 import com.jjf.template.data.PreferenceStorage
 import com.jjf.template.data.SharedPreferenceStorage
-import com.jjf.template.data.api.GithubService
+import com.jjf.template.data.api.ApiService
 import com.jjf.template.data.db.AppDb
-import com.jjf.template.data.db.UserDao
+import com.jjf.template.data.db.ArticleDao
 import com.jjf.template.util.lifecycle.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -41,14 +41,14 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideGithubService(okHttpClient: OkHttpClient): GithubService {
+    fun provideGithubService(okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl("https://www.wanandroid.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .client(okHttpClient)
                 .build()
-                .create(GithubService::class.java)
+                .create(ApiService::class.java)
     }
 
     @Singleton
@@ -65,7 +65,6 @@ class AppModule {
                 .writeTimeout(20, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
         return builder.build()
-
     }
 
     @Singleton
@@ -78,7 +77,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideUserDao(db: AppDb): UserDao {
-        return db.userDao()
+    fun provideArticleDao(db: AppDb): ArticleDao {
+        return db.articleDao()
     }
 }

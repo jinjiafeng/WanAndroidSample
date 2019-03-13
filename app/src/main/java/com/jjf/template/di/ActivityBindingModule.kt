@@ -1,7 +1,7 @@
 package com.jjf.template.di
 
 import com.jjf.template.di.scope.ActivityScoped
-import com.jjf.template.ui.MainActivity
+import com.jjf.template.ui.HomeActivity
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -16,6 +16,6 @@ abstract class ActivityBindingModule {
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = [MainModule::class])
-    abstract fun contributeMainActivity(): MainActivity
+    abstract fun contributeHomeActivity(): HomeActivity
 
 }

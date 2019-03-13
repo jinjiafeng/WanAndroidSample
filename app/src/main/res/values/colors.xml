@@ -17,7 +17,7 @@
     <color name="spacer_grey">#e0e0e0</color>
     <color name="white_90">#e6ffffff</color>
 
-    <color name="status_bar">#202124</color>
+    <color name="status_bar">#fff</color>
     <color name="text_color_tertiary">#dadce0</color>
     <color name="light_grey">#e6e6e6</color>
     <color name="default_tag_color">#999</color>
