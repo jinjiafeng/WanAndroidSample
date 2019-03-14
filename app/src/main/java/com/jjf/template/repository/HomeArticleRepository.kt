@@ -5,9 +5,7 @@ import com.jjf.template.AppExecutors
 import com.jjf.template.data.api.ApiResponse
 import com.jjf.template.data.api.ApiService
 import com.jjf.template.data.db.ArticleDao
-import com.jjf.template.result.Article
-import com.jjf.template.result.ArticleList
-import com.jjf.template.result.Resource
+import com.jjf.template.result.*
 import com.jjf.template.util.RateLimiter
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -18,11 +16,13 @@ import javax.inject.Inject
  * description :
  */
 class HomeArticleRepository @Inject
-constructor(private val executors: AppExecutors, private val service: ApiService, private val articleDao: ArticleDao) {
-
+constructor(private val executors: AppExecutors,
+            private val service: ApiService,
+            private val articleDao: ArticleDao
+) {
     private val repoListRateLimit = RateLimiter<Int>(10, TimeUnit.MINUTES)
 
-    fun loadHomeArticle(page: Int): LiveData<Resource<List<Article>>> {
+    fun loadHomeArticle(page: Int,cid:Int): LiveData<Resource<List<Article>>> {
         return object : NetworkBoundResource<List<Article>, ArticleList>(executors) {
 
             override fun loadFromDb(): LiveData<List<Article>> {
@@ -34,10 +34,31 @@ constructor(private val executors: AppExecutors, private val service: ApiService
             }
 
             override fun createCall(): LiveData<ApiResponse<ArticleList>> =
-                    service.homeArticleList(page)
+                    service.homeArticleList(page,cid)
 
             override fun saveCallResult(item: ArticleList) {
-                articleDao.insert(item.data.datas)
+                articleDao.insertProject(item.data.datas)
+            }
+        }.asLiveData()
+    }
+
+
+    fun loadHomeCategory():LiveData<Resource<List<Category>>>{
+        return object : NetworkBoundResource<List<Category>, ProjectCategory>(executors) {
+
+            override fun loadFromDb(): LiveData<List<Category>> {
+                return articleDao.loadHomeCategory()
+            }
+
+            override fun shouldFetch(data: List<Category>?): Boolean {
+                return data == null || data.isEmpty() || repoListRateLimit.shouldFetch(0)
+            }
+
+            override fun createCall(): LiveData<ApiResponse<ProjectCategory>> =
+                    service.homeCategory()
+
+            override fun saveCallResult(item: ProjectCategory) {
+                articleDao.insertCategory(item.data)
             }
         }.asLiveData()
     }

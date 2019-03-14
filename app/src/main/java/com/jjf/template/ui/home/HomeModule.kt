@@ -1,9 +1,8 @@
-package com.jjf.template.di
+package com.jjf.template.ui.home
 
 import androidx.lifecycle.ViewModel
+import com.jjf.template.di.ViewModelKey
 import com.jjf.template.di.scope.FragmentScoped
-import com.jjf.template.ui.HomeFragment
-import com.jjf.template.ui.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -15,10 +14,10 @@ import dagger.multibindings.IntoMap
  * description :
  */
 @Module
-abstract class MainModule {
+abstract class HomeModule {
 
     @FragmentScoped
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [CategoryModule::class])
     abstract fun ContributeHomeFragment(): HomeFragment
 
     @Binds
@@ -26,4 +25,8 @@ abstract class MainModule {
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(CategoryViewModel::class)
+    abstract fun bindCategoryViewModel(categoryViewModel: CategoryViewModel): ViewModel
 }

@@ -17,6 +17,5 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getLayoutId(), container, false)
     }
 
-
     abstract fun getLayoutId(): Int
 }

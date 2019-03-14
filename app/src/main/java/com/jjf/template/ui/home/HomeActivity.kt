@@ -1,4 +1,4 @@
-package com.jjf.template.ui
+package com.jjf.template.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

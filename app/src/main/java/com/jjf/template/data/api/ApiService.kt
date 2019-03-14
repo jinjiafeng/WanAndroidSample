@@ -2,8 +2,10 @@ package com.jjf.template.data.api
 
 import androidx.lifecycle.LiveData
 import com.jjf.template.result.ArticleList
+import com.jjf.template.result.ProjectCategory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * @author jjf
@@ -11,12 +13,22 @@ import retrofit2.http.Path
  * description :
  */
 interface ApiService {
+
     /**
-     * 登录
+     * 项目分类
      * @param login
-     * @return 用户数据
+     * @return 项目分类
      */
-    @GET("project/list/{page}/json?cid=294")
-    fun homeArticleList(@Path("page") page: Int): LiveData<ApiResponse<ArticleList>>
+    @GET("project/tree/json")
+    fun homeCategory(): LiveData<ApiResponse<ProjectCategory>>
+
+
+    /**
+     * 某一个分类下项目列表数据，分页展示
+     * @param login
+     * @return 项目详情
+     */
+    @GET("project/list/{page}/json")
+    fun homeArticleList(@Path("page") page: Int,@Query("cid")cid:Int): LiveData<ApiResponse<ArticleList>>
 
 }

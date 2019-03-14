@@ -46,9 +46,9 @@
 
     </FrameLayout>
 
-    <!--<com.google.android.material.tabs.TabLayout-->
-        <!--android:id="@+id/tabs"-->
-        <!--android:layout_height="?actionBarSize"-->
-        <!--android:layout_width="match_parent" />-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_height="?actionBarSize"
+        android:layout_width="match_parent" />
 
 </com.google.android.material.appbar.AppBarLayout>

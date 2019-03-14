@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.jjf.template.result.Article
+import com.jjf.template.result.Category
 
 /**
  * @author xj
@@ -15,9 +16,15 @@ import com.jjf.template.result.Article
 @Dao
 interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(articles: List<Article>)
+    fun insertProject(articles: List<Article>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCategory(categories: List<Category>)
 
     @Query("SELECT * FROM article")
     fun loadHomeArticle():LiveData<List<Article>>
 
+
+    @Query("SELECT id,name FROM category")
+    fun loadHomeCategory():LiveData<List<Category>>
 }

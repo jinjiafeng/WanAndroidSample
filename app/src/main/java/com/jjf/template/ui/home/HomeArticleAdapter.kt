@@ -1,4 +1,4 @@
-package com.jjf.template.ui
+package com.jjf.template.ui.home
 
 import android.view.LayoutInflater
 import android.view.View

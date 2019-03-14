@@ -10,9 +10,9 @@ import androidx.room.Entity
 
 
 data class ArticleList(
-    val `data`: Data,
-    val errorCode: Int,
-    val errorMsg: String
+        val `data`: Data,
+        val errorCode: Int,
+        val errorMsg: String
 )
 
 data class Data(
