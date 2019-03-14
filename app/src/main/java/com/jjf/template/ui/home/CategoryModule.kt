@@ -17,4 +17,6 @@ abstract class CategoryModule {
     @ContributesAndroidInjector
     abstract fun ContributeCategoryFragment(): CategoryFragment
 
+
+
 }

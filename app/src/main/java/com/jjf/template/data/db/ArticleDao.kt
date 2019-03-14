@@ -21,8 +21,8 @@ interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCategory(categories: List<Category>)
 
-    @Query("SELECT * FROM article")
-    fun loadHomeArticle():LiveData<List<Article>>
+    @Query("SELECT * FROM article WHERE superChapterId =:cid")
+    fun loadHomeArticle(cid:Int):LiveData<List<Article>>
 
 
     @Query("SELECT id,name FROM category")

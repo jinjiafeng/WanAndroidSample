@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.jjf.template.R
-import com.jjf.template.di.Injectable
+import com.jjf.template.result.Status
 import com.jjf.template.util.viewModelProvider
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_category.*
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ import javax.inject.Inject
  * date: 19-3-14
  * description :
  */
-class CategoryFragment : Fragment(),Injectable {
+class CategoryFragment : DaggerFragment() {
 
     companion object {
         private const val ARG_PROJECT_CID = "arg.project_cid"
@@ -42,11 +42,15 @@ class CategoryFragment : Fragment(),Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         homeViewModel = viewModelProvider(viewModelFactory)
+        val cId = arguments?.getInt(ARG_PROJECT_CID)
+        cId?.let { homeViewModel.setCategoryId(it) }
         val articleAdapter = HomeArticleAdapter()
         rvArticle.adapter = articleAdapter
         rvArticle.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         homeViewModel.projects.observe(viewLifecycleOwner, Observer {
-            articleAdapter.submitList(it.data)
+            if(it.status == Status.SUCCESS){
+                articleAdapter.submitList(it.data?.data?.datas)
+            }
         })
     }
 }
