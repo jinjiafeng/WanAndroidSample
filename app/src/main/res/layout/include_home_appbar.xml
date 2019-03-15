@@ -13,42 +13,42 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<com.google.android.material.appbar.AppBarLayout style="@style/Widget.AppBar"
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/appbar"
-    android:layout_height="wrap_content"
+    style="@style/Widget.AppBar"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <FrameLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/margin_normal"
         app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
         <ImageView
-            android:foreground="?selectableItemBackground"
             android:id="@+id/profile_button"
-            android:layout_gravity="center_vertical|start"
-            android:layout_height="@dimen/a11y_min_touch_target"
             android:layout_width="@dimen/a11y_min_touch_target"
+            android:layout_height="@dimen/a11y_min_touch_target"
+            android:layout_gravity="center_vertical|start"
+            android:foreground="?selectableItemBackground"
             android:padding="@dimen/spacing_micro" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/title"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:minHeight="?actionBarSize"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.IOSched.ToolbarTitle" />
+            android:textAppearance="@style/TextAppearance.Component.ToolbarTitle" />
 
     </FrameLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_height="?actionBarSize"
-        android:layout_width="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize" />
 
 </com.google.android.material.appbar.AppBarLayout>

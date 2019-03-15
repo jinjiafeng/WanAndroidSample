@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.jjf.template.R
 import com.jjf.template.result.Category
 import com.jjf.template.result.Status
+import com.jjf.template.util.findNavController
 import com.jjf.template.util.lifecycle.ViewModelFactory
 import com.jjf.template.util.viewModelProvider
 import dagger.android.support.DaggerFragment
@@ -30,11 +31,11 @@ class HomeFragment : DaggerFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        title.text = findNavController().currentDestination?.label
         viewPager.pageMargin = resources.getDimension(R.dimen.spacing_normal).toInt()
         viewPager.setPageMarginDrawable(R.drawable.page_margin)
         tabs.setupWithViewPager(viewPager)

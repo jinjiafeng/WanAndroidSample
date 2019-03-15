@@ -9,9 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.jjf.template.R
 import com.jjf.template.result.Status
+import com.jjf.template.util.findNavController
 import com.jjf.template.util.viewModelProvider
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_category.*
+import kotlinx.android.synthetic.main.include_home_appbar.*
 import javax.inject.Inject
 
 /**
@@ -49,7 +51,7 @@ class CategoryFragment : DaggerFragment() {
         rvArticle.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         homeViewModel.projects.observe(viewLifecycleOwner, Observer {
             if(it.status == Status.SUCCESS){
-                articleAdapter.submitList(it.data?.data?.datas)
+                articleAdapter.submitList(it.data)
             }
         })
     }

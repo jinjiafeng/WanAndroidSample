@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.jjf.template.ui.home.HomeFragment"
-        android:label="MainFragment"
+        android:label="@string/title_home_project"
         toosl:layout="@layout/fragment_main">
 
         <action

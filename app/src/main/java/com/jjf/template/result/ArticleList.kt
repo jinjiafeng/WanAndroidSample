@@ -1,6 +1,7 @@
 package com.jjf.template.result
 
 import androidx.room.Entity
+import androidx.room.Index
 
 /**
  * @author xj
@@ -25,7 +26,7 @@ data class Data(
         val total: Int
 )
 
-@Entity(primaryKeys = ["id"])
+@Entity(primaryKeys = ["id"],indices = [Index("chapterId")])
 data class Article(
     val apkLink: String,
     val author: String,

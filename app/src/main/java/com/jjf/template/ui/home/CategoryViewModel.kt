@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.jjf.template.repository.HomeArticleRepository
-import com.jjf.template.result.ArticleList
+import com.jjf.template.result.Article
 import com.jjf.template.result.Resource
 import com.jjf.template.util.lifecycle.AbsentLiveData
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class CategoryViewModel
 
     private val _categoryId = MutableLiveData<Int>()
 
-    val projects: LiveData<Resource<ArticleList>> = Transformations.switchMap(_categoryId) { id ->
+    val projects: LiveData<Resource<List<Article>>> = Transformations.switchMap(_categoryId) { id ->
         if (id == 0) {
             AbsentLiveData.create()
         } else {
