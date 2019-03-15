@@ -17,6 +17,7 @@ import com.jjf.template.util.findNavController
 import com.jjf.template.util.lifecycle.ViewModelFactory
 import com.jjf.template.util.viewModelProvider
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.include_home_appbar.*
 import javax.inject.Inject

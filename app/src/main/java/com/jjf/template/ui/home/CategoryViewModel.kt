@@ -34,4 +34,10 @@ class CategoryViewModel
             _categoryId.value = categoryId
         }
     }
+
+    fun refresh(){
+        _categoryId.value?.let {
+            _categoryId.value = it
+        }
+    }
 }

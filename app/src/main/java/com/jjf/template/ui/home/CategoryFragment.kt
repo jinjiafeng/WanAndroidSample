@@ -9,11 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.jjf.template.R
 import com.jjf.template.result.Status
-import com.jjf.template.util.findNavController
 import com.jjf.template.util.viewModelProvider
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_category.*
-import kotlinx.android.synthetic.main.include_home_appbar.*
 import javax.inject.Inject
 
 /**
@@ -41,6 +39,14 @@ class CategoryFragment : DaggerFragment() {
         return inflater.inflate(R.layout.fragment_category,container,false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        swipeRefreshLayout.setColorSchemeColors(*(resources.getIntArray(R.array.swipe_refresh)))
+        swipeRefreshLayout.setOnRefreshListener {
+            homeViewModel.refresh()
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         homeViewModel = viewModelProvider(viewModelFactory)
@@ -50,6 +56,7 @@ class CategoryFragment : DaggerFragment() {
         rvArticle.adapter = articleAdapter
         rvArticle.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         homeViewModel.projects.observe(viewLifecycleOwner, Observer {
+            swipeRefreshLayout.isRefreshing = it.status == Status.LOADING
             if(it.status == Status.SUCCESS){
                 articleAdapter.submitList(it.data)
             }
