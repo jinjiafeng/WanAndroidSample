@@ -50,7 +50,7 @@ class CustomDimDialog(context: Context?) : AppCompatDialog(context, R.style.Them
                 setMargins(verticalMargin, horizontalMargin, horizontalMargin, verticalMargin)
             })
             val rect = Rect()
-            setOnTouchListener { v, event ->
+            setOnTouchListener { _, event ->
                 when (event.action) {
                     // The FrameLayout is technically inside the dialog, but we treat it as outside.
                     MotionEvent.ACTION_DOWN -> {
