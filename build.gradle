@@ -15,13 +15,13 @@ buildscript {
         appcompatVersion = '1.0.2'
         browserVersion = '1.0.0'
         constraintLayoutVersion = '2.0.0-alpha3'
-        navigationVersion = "2.0.0-rc02"
+        navigationVersion = "2.1.0-alpha01"
         roomVersion = "2.1.0-alpha04"
         dagger = "2.16"
         flexboxVersion = "0.3.2"
         glideVersion = "4.8.0"
         gsonVersion = "2.8.1"
-        ktxVersion = "1.1.0-alpha03"
+        ktxVersion = "1.1.0-alpha05"
         leakCanaryVersion = "1.6.1"
         lifecycleVersion = '2.0.0'
         lottieVersion = "2.5.1"
