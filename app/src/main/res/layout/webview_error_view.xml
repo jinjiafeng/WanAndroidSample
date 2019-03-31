@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+
+    <TextView
+        android:id="@+id/error_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.4"
+        android:text="网页加载出错.请点击重新加载"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_error"
+        android:contentDescription="@null"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/error_tv"
+        android:layout_marginBottom="@dimen/margin_normal"/>
+
+    <Button
+        android:id="@+id/btnErrorReload"
+        android:layout_width="120dp"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/reload"
+        android:layout_below="@id/error_tv"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_height="50dp"/>
+</RelativeLayout>

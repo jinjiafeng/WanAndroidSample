@@ -3,6 +3,7 @@ package com.jjf.template.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +35,10 @@ class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         view.tvTitle.text = article.title
         view.tvDes.text = article.desc
         view.tvDate.text = article.niceDate
+        view.setOnClickListener {
+            val action = HomeFragmentDirections.showProjectDetail(article.link, article.title)
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 }
 

@@ -42,7 +42,7 @@ dependencies {
     implementation "com.google.android:flexbox:$rootProject.flexboxVersion"
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
     implementation "com.pacioianu.david:ink-page-indicator:$rootProject.pageIndicatorVersion"
-
+    implementation "com.just.agentweb:agentweb:$agentWebVersion"
     // Architecture Components
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"

@@ -12,17 +12,20 @@
         toosl:layout="@layout/fragment_main">
 
         <action
-            android:id="@+id/showResp"
-            app:destination="@id/respFragment"/>
-
+            android:id="@+id/showProjectDetail"
+            app:destination="@id/detailFragment"/>
     </fragment>
 
     <fragment
-        android:id="@+id/respFragment"
-        android:name="com.jjf.template.ui.RespFragment"
-        android:label="RespFragment">
+        android:id="@+id/detailFragment"
+        android:name="com.jjf.template.ui.ProjectDetailFragment"
+        android:label="ProjectDetailFragment">
         <argument
-            android:name="name"
+            android:name="url"
+            app:argType="string" />
+
+        <argument
+            android:name="title"
             app:argType="string" />
     </fragment>
 
