@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import com.jjf.template.R
 import com.jjf.template.util.CommonUtils
 import com.just.agentweb.AgentWeb
 
@@ -19,15 +20,16 @@ import com.just.agentweb.AgentWeb
 class WebViewCreator : LifecycleObserver {
     lateinit var agentWeb: AgentWeb
 
-    fun createWebView(activity: Activity, viewGroup: ViewGroup, articleLink: String) {
+    fun createWebView(activity: Activity, viewGroup: ViewGroup, articleLink: String):AgentWeb {
         this.agentWeb = AgentWeb.with(activity)
                 .setAgentWebParent(viewGroup, LinearLayout.LayoutParams(-1, -1))
                 .useDefaultIndicator()
-                .setMainFrameErrorView(com.jjf.template.R.layout.webview_error_view, -1)
+                .setMainFrameErrorView(R.layout.webview_error_view, -1)
                 .createAgentWeb()
                 .ready()
                 .go(articleLink)
         initSetting()
+        return agentWeb
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -63,7 +65,7 @@ class WebViewCreator : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun onPause() {
-        agentWeb.webLifeCycle.onPause();
+        agentWeb.webLifeCycle.onPause()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

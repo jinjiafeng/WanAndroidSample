@@ -41,13 +41,14 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:minHeight="?actionBarSize"
-            android:text="@string/app_name"
+            android:text="项目"
             android:textAppearance="@style/TextAppearance.Component.ToolbarTitle" />
 
     </FrameLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
+        app:tabMode="scrollable"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize" />
 
