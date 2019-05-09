@@ -24,16 +24,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'   // aar目录
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
     // UI(根据情况选择)
     implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
     implementation "androidx.browser:browser:$rootProject.browserVersion"
@@ -43,7 +48,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
     implementation "com.pacioianu.david:ink-page-indicator:$rootProject.pageIndicatorVersion"
     implementation "com.just.agentweb:agentweb:$agentWebVersion"
-    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha02'
+    implementation "androidx.viewpager2:viewpager2:$rootProject.viewPager2Version"
 
     // Architecture Components
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
@@ -52,7 +57,7 @@ dependencies {
     implementation  "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    testImplementation "androidx.arch.core:core-testing:$rootProject.lifecycleVersion"
+    testImplementation "androidx.arch.core:core-testing:2.1.0-beta01"
 
     // OKHttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
@@ -78,7 +83,7 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
     //test
-    androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
+    androidTestImplementation "androidx.test:runner:1.2.0-beta01"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 
 }

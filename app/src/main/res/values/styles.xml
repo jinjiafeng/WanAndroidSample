@@ -59,7 +59,8 @@
         <item name="tabIndicator">@drawable/tab_indicator</item>
     </style>
 
-    <style name="TextAppearance.Component.Tab" parent="@style/TextAppearance.MaterialComponents.Tab">
+    <style name="TextAppearance.Component.Tab"
+           parent="@style/TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:fontFamily">@font/google_sans</item>
         <item name="android:textColor">@color/tab_text</item>
         <item name="android:textStyle">bold</item>
