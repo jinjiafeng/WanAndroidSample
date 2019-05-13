@@ -59,7 +59,7 @@ class HomeFragment : DaggerFragment() {
      * Adapter that builds a page for each project category.
      */
     inner class ScheduleAdapter(fm: FragmentManager, private val labelsForCategories: List<Category>) :
-            FragmentStatePagerAdapter(fm,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+            FragmentStatePagerAdapter(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getCount() = labelsForCategories.size
 

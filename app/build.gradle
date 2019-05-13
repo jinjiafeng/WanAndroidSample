@@ -28,6 +28,10 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
+    dataBinding{
+        enabled true
+    }
 }
 
 repositories {
@@ -52,6 +56,7 @@ dependencies {
 
     // Architecture Components
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
     implementation  "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation  "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
