@@ -3,14 +3,12 @@ package com.jjf.template.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.jjf.template.R
+import com.jjf.template.databinding.ItemHomeArticleBinding
 import com.jjf.template.result.Article
-import kotlinx.android.synthetic.main.item_home_article.view.*
 
 /**
  * @author xj
@@ -20,24 +18,32 @@ import kotlinx.android.synthetic.main.item_home_article.view.*
 
 class HomeArticleAdapter : ListAdapter<Article, ViewHolder>(ArticleDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_home_article, parent, false))
+        return ViewHolder(ItemHomeArticleBinding.inflate(LayoutInflater.from(parent.context),
+                parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val article = getItem(position)
+        holder.apply {
+            holder.bind(article,createOnclickListener(article.link,article.title))
+            itemView.tag = article
+        }
+    }
+
+    private fun createOnclickListener(link:String,title:String): View.OnClickListener{
+        return View.OnClickListener {
+            val action = HomeFragmentDirections.showProjectDetail(link, title)
+            it.findNavController().navigate(action)
+        }
     }
 }
 
-class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-    fun bind(article: Article) {
-        Glide.with(view.context).load(article.envelopePic).into(view.ivEnvelopePic)
-        view.tvTitle.text = article.title
-        view.tvDes.text = article.desc
-        view.tvDate.text = article.niceDate
-        view.setOnClickListener {
-            val action = HomeFragmentDirections.showProjectDetail(article.link, article.title)
-            Navigation.findNavController(view).navigate(action)
+class ViewHolder(private val binding: ItemHomeArticleBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(article: Article, listener: View.OnClickListener) {
+        binding.apply {
+            binding.article = article
+            binding.clickListener = listener
+            executePendingBindings()
         }
     }
 }

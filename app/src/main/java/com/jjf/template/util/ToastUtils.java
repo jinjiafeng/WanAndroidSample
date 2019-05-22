@@ -10,10 +10,19 @@ import androidx.annotation.StringRes;
 
 
 public class ToastUtils {
+
     private static Toast sToast;
 
     public static void showShort(String s) {
         show(s, Toast.LENGTH_SHORT);
+    }
+    public static void showShort(@StringRes int  resId) {
+        show(resId, Toast.LENGTH_SHORT);
+    }
+
+    private static void show(@StringRes int  resId, int duration) {
+        final String msg = App.instance.getString(resId);
+        show(msg, duration);
     }
 
     private static void show(String msg, int duration) {
@@ -26,26 +35,13 @@ public class ToastUtils {
     }
 
     private static void showToast(String msg, int duration) {
-        if (sToast != null) {
-            sToast.setText(msg);
-            sToast.setDuration(duration);
-            sToast.show();
-        } else {
-            sToast = Toast.makeText(App.instance, msg, duration);
-            sToast.show();
-        }
-    }
-
-    public static void showShort(@StringRes int resId) {
-        show(resId, Toast.LENGTH_SHORT);
-    }
-
-    private static void show(@StringRes int resId, int duration) {
-        final String msg = App.instance.getString(resId);
-        show(msg, duration);
+        if (sToast != null) sToast.cancel();
+        sToast = Toast.makeText(App.instance, msg, duration);
+        sToast.show();
     }
 
     public static void showLong(String s) {
+        //        Toast.makeText(MainApplication.getInstance(), s, Toast.LENGTH_LONG).show();
         show(s, Toast.LENGTH_LONG);
     }
 }
