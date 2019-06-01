@@ -15,7 +15,7 @@ abstract class CategoryModule {
 
     @ChildFragmentScoped
     @ContributesAndroidInjector
-    abstract fun ContributeCategoryFragment(): CategoryFragment
+    abstract fun contributeCategoryFragment(): CategoryFragment
 
 
 

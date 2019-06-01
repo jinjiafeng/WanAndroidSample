@@ -16,7 +16,7 @@ interface ApiService {
 
     /**
      * 项目分类
-     * @param login
+     * @param
      * @return 项目分类
      */
     @GET("project/tree/json")
@@ -25,7 +25,7 @@ interface ApiService {
 
     /**
      * 某一个分类下项目列表数据，分页展示
-     * @param login
+     * @param
      * @return 项目详情
      */
     @GET("project/list/{page}/json")

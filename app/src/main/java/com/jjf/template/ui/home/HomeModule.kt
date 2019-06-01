@@ -18,7 +18,7 @@ abstract class HomeModule {
 
     @FragmentScoped
     @ContributesAndroidInjector(modules = [CategoryModule::class])
-    abstract fun ContributeHomeFragment(): HomeFragment
+    abstract fun contributeHomeFragment(): HomeFragment
 
     @Binds
     @IntoMap

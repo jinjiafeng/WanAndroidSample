@@ -18,7 +18,7 @@ import com.jjf.template.result.Status
 import com.jjf.template.util.lifecycle.ViewModelFactory
 import com.jjf.template.util.viewModelProvider
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.include_home_appbar.*
 import javax.inject.Inject
 
@@ -31,7 +31,7 @@ class HomeFragment : DaggerFragment() {
     lateinit var factory: ViewModelFactory
     private val fragments  = SparseArray<Fragment>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
