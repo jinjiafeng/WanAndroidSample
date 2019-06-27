@@ -1,13 +1,8 @@
-package com.jjf.template.repository
+package com.jjf.core.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.jjf.template.AppExecutors
-import com.jjf.template.data.api.ApiEmptyResponse
-import com.jjf.template.data.api.ApiErrorResponse
-import com.jjf.template.data.api.ApiResponse
-import com.jjf.template.data.api.ApiSuccessResponse
-import com.jjf.template.result.Resource
+import com.jjf.core.AppExecutors
 
 /**
  * @author jinjiafeng

@@ -6,7 +6,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.jjf.template.repository.HomeArticleRepository
 import com.jjf.template.result.Article
-import com.jjf.template.result.Resource
+import com.jjf.core.data.Resource
 import com.jjf.template.util.lifecycle.AbsentLiveData
 import javax.inject.Inject
 

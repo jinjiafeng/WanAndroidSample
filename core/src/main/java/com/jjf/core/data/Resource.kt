@@ -1,6 +1,6 @@
-package com.jjf.template.result
+package com.jjf.core.data
 
-import com.jjf.template.result.Status.*
+import com.jjf.core.data.Status.*
 
 /**
  * @author xj

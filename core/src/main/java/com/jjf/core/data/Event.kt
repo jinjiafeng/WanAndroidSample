@@ -1,4 +1,4 @@
-package com.jjf.template.result
+package com.jjf.core.data
 
 import androidx.lifecycle.Observer
 

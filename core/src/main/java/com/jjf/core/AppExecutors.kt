@@ -1,4 +1,4 @@
-package com.jjf.template
+package com.jjf.core
 
 import android.os.Handler
 import android.os.Looper

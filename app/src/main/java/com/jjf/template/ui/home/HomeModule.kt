@@ -1,7 +1,7 @@
 package com.jjf.template.ui.home
 
 import androidx.lifecycle.ViewModel
-import com.jjf.template.di.ViewModelKey
+import com.jjf.core.di.ViewModelKey
 import com.jjf.template.di.scope.FragmentScoped
 import dagger.Binds
 import dagger.Module

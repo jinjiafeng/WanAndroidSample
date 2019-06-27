@@ -2,21 +2,17 @@ package com.jjf.template.di
 
 import android.content.Context
 import androidx.room.Room
+import com.jjf.core.di.HttpModule
+import com.jjf.core.di.ViewModelModule
 import com.jjf.template.App
-import com.jjf.template.BuildConfig
 import com.jjf.template.data.PreferenceStorage
 import com.jjf.template.data.SharedPreferenceStorage
 import com.jjf.template.data.api.ApiService
 import com.jjf.template.data.db.AppDb
 import com.jjf.template.data.db.ArticleDao
-import com.jjf.template.util.lifecycle.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 /**
@@ -25,9 +21,8 @@ import javax.inject.Singleton
  * description :
  */
 
-@Module
+@Module(includes = [ViewModelModule::class,HttpModule::class])
 class AppModule {
-
     @Provides
     fun provideContext(application: App): Context {
         return application.applicationContext
@@ -35,36 +30,14 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providePreferenceStorage(context: Context):PreferenceStorage{
+    fun providePreferenceStorage(context: Context): PreferenceStorage {
         return SharedPreferenceStorage(context)
     }
 
     @Singleton
     @Provides
-    fun provideGithubService(okHttpClient: OkHttpClient): ApiService {
-        return Retrofit.Builder()
-                .baseUrl("https://www.wanandroid.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .client(okHttpClient)
-                .build()
-                .create(ApiService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideOkHttpClient(): OkHttpClient {
-        val builder = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor()
-            loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            builder.addNetworkInterceptor(loggingInterceptor)
-        }
-        builder.connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-        return builder.build()
+    fun provideGithubService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 
     @Singleton

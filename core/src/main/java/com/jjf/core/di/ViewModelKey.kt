@@ -1,4 +1,4 @@
-package com.jjf.template.di
+package com.jjf.core.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

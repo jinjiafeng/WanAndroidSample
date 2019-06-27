@@ -1,4 +1,4 @@
-package com.jjf.template.util
+package com.jjf.core.util
 
 import android.content.Context
 import android.view.View

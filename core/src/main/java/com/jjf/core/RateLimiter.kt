@@ -1,4 +1,4 @@
-package com.jjf.template.util
+package com.jjf.core
 
 import android.os.SystemClock
 import androidx.collection.ArrayMap

@@ -1,12 +1,14 @@
 package com.jjf.template.repository
 
 import androidx.lifecycle.LiveData
-import com.jjf.template.AppExecutors
-import com.jjf.template.data.api.ApiResponse
+import com.jjf.core.AppExecutors
+import com.jjf.core.data.ApiResponse
 import com.jjf.template.data.api.ApiService
 import com.jjf.template.data.db.ArticleDao
 import com.jjf.template.result.*
-import com.jjf.template.util.RateLimiter
+import com.jjf.core.RateLimiter
+import com.jjf.core.data.NetworkBoundResource
+import com.jjf.core.data.Resource
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

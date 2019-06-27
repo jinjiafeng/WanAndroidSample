@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.jjf.template.util
+package com.jjf.core
 
-import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.net.wifi.WifiConfiguration
@@ -29,7 +28,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
-import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -37,7 +35,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.*
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.jjf.template.BuildConfig
 import timber.log.Timber
 
 
@@ -45,15 +42,7 @@ fun Int.isEven() = this % 2 == 0
 
 fun View.isRtl() = layoutDirection == View.LAYOUT_DIRECTION_RTL
 
-/**
- * An extension to `postponeEnterTransition` which will resume after a timeout.
- */
-fun Activity.postponeEnterTransition(timeout: Long) {
-    postponeEnterTransition()
-    window.decorView.postDelayed(timeout) {
-        startPostponedEnterTransition()
-    }
-}
+
 
 /**
  * Calculated the widest line in a [StaticLayout].

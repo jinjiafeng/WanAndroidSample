@@ -12,11 +12,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayout
+import com.jjf.core.data.Status
+import com.jjf.core.viewModelProvider
 import com.jjf.template.R
 import com.jjf.template.result.Category
-import com.jjf.template.result.Status
 import com.jjf.template.util.lifecycle.ViewModelFactory
-import com.jjf.template.util.viewModelProvider
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.include_home_appbar.*

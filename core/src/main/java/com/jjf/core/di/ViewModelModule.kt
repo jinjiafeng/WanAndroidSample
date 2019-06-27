@@ -1,4 +1,4 @@
-package com.jjf.template.di
+package com.jjf.core.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.jjf.template.util.lifecycle.ViewModelFactory

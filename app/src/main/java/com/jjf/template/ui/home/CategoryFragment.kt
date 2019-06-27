@@ -1,16 +1,14 @@
 package com.jjf.template.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.jjf.core.base.InjectFragment
+import com.jjf.core.data.Status
+import com.jjf.core.viewModelProvider
 import com.jjf.template.R
-import com.jjf.template.result.Status
-import com.jjf.template.util.viewModelProvider
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_category.*
 import javax.inject.Inject
 
@@ -19,7 +17,8 @@ import javax.inject.Inject
  * date: 19-3-14
  * description :
  */
-class CategoryFragment : DaggerFragment() {
+class CategoryFragment : InjectFragment() {
+    override val layoutId = R.layout.fragment_category
 
     companion object {
         private const val ARG_PROJECT_CID = "arg.project_cid"
@@ -34,10 +33,6 @@ class CategoryFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var homeViewModel: CategoryViewModel
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_category,container,false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

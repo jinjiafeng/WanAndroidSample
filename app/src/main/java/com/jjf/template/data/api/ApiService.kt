@@ -1,6 +1,7 @@
 package com.jjf.template.data.api
 
 import androidx.lifecycle.LiveData
+import com.jjf.core.data.ApiResponse
 import com.jjf.template.result.ArticleList
 import com.jjf.template.result.ProjectCategory
 import retrofit2.http.GET

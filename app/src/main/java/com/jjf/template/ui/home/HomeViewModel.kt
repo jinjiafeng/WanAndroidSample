@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.jjf.template.repository.HomeArticleRepository
 import com.jjf.template.result.Category
-import com.jjf.template.result.Resource
+import com.jjf.core.data.Resource
 import javax.inject.Inject
 
 /**
